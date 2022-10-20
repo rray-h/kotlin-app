@@ -1,0 +1,153 @@
+.container {
+	display: flex;
+	padding: 0 15px 0 0;
+}
+
+.code-come {
+}
+
+
+
+/*===Search===============================================*/
+
+.search{
+	padding:0 10px;
+	border-right: 3px solid #D65C5B;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 100vh;
+}
+
+.search__body > * {
+	margin-bottom: 15px;
+}
+
+
+.form {
+	padding: 10px 0 0 0;
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.form__search {
+	width: 250px;
+	border-radius: 5px;
+	padding: 15px 0 15px 10px;
+	background: #fff;
+	box-shadow: 0 0 10px #514945;
+}
+
+.form__btn {
+	position: absolute;
+	cursor: default;
+	top: 25px;
+	right: 15px;
+	width: 15px;
+	height: 15px;
+	background: url('../image/search.svg');
+}
+
+.search__list > * {
+	margin-bottom: 20px;
+	box-shadow: 0 0 10px #514945;
+}
+
+.search__item{
+	position: relative;
+	padding: 30px 0;
+
+	box-sizing: border-box;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	background: #ECEEF2;
+/*	border: 1px solid #514945;
+*/	border-radius: 5px;
+	color: inherit;
+}
+
+.search__item:hover {
+	box-shadow: none;
+}
+
+.search__item:before {
+	content: '';
+	position: absolute;
+	bottom: -12px;
+	left: -12px;
+	width: 110%;
+	height: 1px;
+	background-color: #D65C5B;
+}
+
+.search__link {
+	color: inherit;
+}
+
+.hide {
+	display: none;
+}
+
+
+/*===/Search===============================================*/
+
+.main-content {
+	padding: 10px 10px 0 0;
+	width: 1000px;
+	
+	height: 100vh;
+	margin-left: 20px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.main-content__body {
+	display: flex;
+	gap:  15px;
+}
+
+.about {
+	flex: 0 0 60%;
+}
+
+.about > *:not(:last-child) {
+	margin-bottom: 15px;
+}
+
+.about__title {
+	padding: 10px 0;
+	text-align: center;
+	background: #F0E9E3;
+	border-radius: 5px;
+
+	font-size: 23px;
+	line-height: calc(28 / 23);
+}
+
+.about__text {
+	padding: 10px;
+	background: #F0E9E3;
+	line-height: calc(28 / 16);
+	border-radius: 5px;
+}
+
+.about__links {
+	text-align: center;
+	padding: 10px;
+	background: #F0E9E3;
+	line-height: calc(28 / 16);
+	border-radius: 5px;
+}
+
+.main-content__code {
+	padding: 10px;
+	font-size: 15px;
+	flex: 0 0 40%;
+	display: flex;
+	align-items: center;
+	background-color: #F0E9E3;
+	border-radius: 5px;
+	line-height: calc(28 / 16);
+}
