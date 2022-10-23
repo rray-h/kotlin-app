@@ -5,10 +5,15 @@ import { NavLink } from "react-router-dom";
 
 function Search () {
 
-	let arr = [], arrMain = [];
 
-	const [value, setValue] = useState('')
+	// Здесь создается состояние, 
+	// в setValue поподает весь текст, что заполняется в блоке поиска(строка 43, событие onChange),
+	// в value весь текст сохраняется сохраняется 
+	const [value, setValue] = useState('');
 
+
+	//Это массив обЪектов, в котором хранятся наши блоки-заголовки,
+	//и автоматически генерируются через фильтр
 	const itemInfo = [
 		{name: 'Что такое Kotlin?', classNL: 'search__item', classNA: 'search__link', path: '/iskotlin'},
 		{name: 'История языка Kotlin', classNL: 'search__item', classNA: 'search__link', path: '/kotlin'},
@@ -24,38 +29,40 @@ function Search () {
 		{name: 'Целочисленные типы', classNL: 'search__item', classNA: 'search__link', path: '/integer'},
 	]
 
-	// for(let i = 0; i < itemInfo.length; i++) {
-	// 	arr.push(itemInfo[i].name.split(' '));
-	// }
-
-	// for(let i = 0; i < itemInfo.length; i++) {
-
-	// 	for(let j = 0; j < arr[i].length; j++) {
-
-	// 		arrMain.push(arr[i][j]);
-	// 	}
-	// }
-
-	for(let i = 0; i < itemInfo.length; i++) {
-		arr.push(itemInfo[i].name);
-	}
-
-	const filterS = itemInfo.filter((item) => {
-		if(value == '') {
-			return item.name;
-		} else {
-			for(let i = 0; i < arr.length; i++) {
-				if(item.name.slice(0, value.length).toLowerCase().includes(value.toLowerCase())) {
-					return item.name;
-				} else {
-					continue;
-				}
-			}		
-
-			console.log(arr);	
-		}
+	//Здесь создается фильтр,
+	//по которому появляются блоки-заголовки
+	//изначально фильтр пустой(то есть блоки-заголовки никак не фильтруются),
+	//когда в блок поиска что-что вводится, вводимый текст становится фильтром для наших блоков,
+	//сортируя их по названию блока-заголовка, сопостовляя вводимый текст
+	const arrWords = itemInfo.map((item) => {
+		return item.name.toLowerCase().split(' ');
 	})
 
+	const filterS = itemInfo.filter((item) => {
+		
+		for(let i = 0; i < arrWords.length; i++) {
+
+			for(let j = 0; j < arrWords[i].length; j++) {
+
+
+				if(arrWords[i][j].slice(0, value.length).toLowerCase().includes(value.toLowerCase())) {
+
+					if(item.name.toLowerCase().includes(arrWords[i].join(' '))) {
+						return item.name;
+					} 
+				}
+
+
+
+				// if(item.name.slice(0, value.length).toLowerCase().includes(value.toLowerCase())) {
+				// 	return item.name;
+				// }
+			}	
+		}
+
+	})
+
+	// Здесь генерируется лицевая часть блока поиска и заголовков
 	return (
 		<div className="search">
 			<div className="search__container">
@@ -63,7 +70,7 @@ function Search () {
 					<div className="search__form">
 						<form action="#" className="form">
 							<input type="text" placeholder="Search" id="search" className="form__search" onChange={(event) => setValue(event.target.value)} />
-							<button className="form__btn"></button>
+							<div className="form__btn"></div>
 						</form>
 					</div>
 
@@ -71,6 +78,7 @@ function Search () {
 					<ul className="search__list">
 
 						{
+							//Здесь функция выводит блоки-загловки через фильтр
 							filterS.map((item, i) => {
 								return (
 									<NavLink key={i} className={item.classNL} to={item.path}> <li className={item.classNA}>{item.name}</li> </NavLink>

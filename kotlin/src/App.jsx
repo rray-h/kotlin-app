@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Search from "./search";
 
-
+//Импорт всех компонентов
 import HistoryKotlin from "./assets/components/HistoryKotlin";
 import BooleanType from "./assets/components/BooleanType";
 import ArrayType from "./assets/components/ArrayType";
@@ -18,10 +18,12 @@ import Integer from "./assets/components/Integer";
 import IsKotlin from "./assets/components/IsKotlin";
 import Transform from "./assets/components/Transform";
 
+//Импорт стилей ко всем компонентам
 import "./assets/styles/App.css";
 
 function App() {
 
+  // Массив объъектов для маршрутизации между страницами
   const arrRoute = [
     {path: "/iskotlin", el: <IsKotlin />},
     {path: "/kotlin", el: <HistoryKotlin />},
@@ -38,7 +40,7 @@ function App() {
     {path: "/transform", el: <Transform />},
   ]
 
-
+  //Здесь генеририруются все компоненты
   return (
 
     <Router>
@@ -46,9 +48,9 @@ function App() {
       <div className="container">
         
         <Search />
-                  
+
         <Routes>
-          {arrRoute.map(item => <Route path={item.path} element={item.el} />)}      
+          {arrRoute.map((item, i) => <Route key={i} path={item.path} element={item.el} />)}      
         </Routes>
       </div>
 
