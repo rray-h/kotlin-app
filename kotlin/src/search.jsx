@@ -15,18 +15,18 @@ function Search () {
 	//Это массив обЪектов, в котором хранятся наши блоки-заголовки,
 	//и автоматически генерируются через фильтр
 	const itemInfo = [
-		{name: 'Что такое Kotlin?', classNL: 'search__item', classNA: 'search__link', path: '/iskotlin'},
-		{name: 'История языка Kotlin', classNL: 'search__item', classNA: 'search__link', path: '/kotlin'},
-		{name: 'Логический тип', classNL: 'search__item', classNA: 'search__link', path: '/boolean'},
-		{name: 'Массивы', classNL: 'search__item', classNA: 'search__link', path: '/array'},
-		{name: 'Массивы примитивных типов', classNL: 'search__item', classNA: 'search__link', path: '/arrayprim'},
-		{name: 'Операции', classNL: 'search__item', classNA: 'search__link', path: '/operation'},
-		{name: 'Представление чисел в JVM', classNL: 'search__item', classNA: 'search__link', path: '/jvm'},
-		{name: 'Символы и строки', classNL: 'search__item', classNA: 'search__link', path: '/string'},
-		{name: 'Символьные постоянные', classNL: 'search__item', classNA: 'search__link', path: '/permanent'},
-		{name: 'Строковые литералы', classNL: 'search__item', classNA: 'search__link', path: '/literal'},
-		{name: 'Типы с плавающей точкой', classNL: 'search__item', classNA: 'search__link', path: '/point'},
-		{name: 'Целочисленные типы', classNL: 'search__item', classNA: 'search__link', path: '/integer'},
+		{name: ' Что такое Kotlin?', classNL: 'search__item', classNA: 'search__link', path: '/iskotlin'},
+		{name: ' История языка Kotlin', classNL: 'search__item', classNA: 'search__link', path: '/kotlin'},
+		{name: ' Логический тип', classNL: 'search__item', classNA: 'search__link', path: '/boolean'},
+		{name: ' Массивы', classNL: 'search__item', classNA: 'search__link', path: '/array'},
+		{name: ' Массивы примитивных типов', classNL: 'search__item', classNA: 'search__link', path: '/arrayprim'},
+		{name: ' Операции', classNL: 'search__item', classNA: 'search__link', path: '/operation'},
+		{name: ' Представление чисел в JVM', classNL: 'search__item', classNA: 'search__link', path: '/jvm'},
+		{name: ' Символы и строки', classNL: 'search__item', classNA: 'search__link', path: '/string'},
+		{name: ' Символьные постоянные', classNL: 'search__item', classNA: 'search__link', path: '/permanent'},
+		{name: ' Строковые литералы', classNL: 'search__item', classNA: 'search__link', path: '/literal'},
+		{name: ' Типы с плавающей точкой', classNL: 'search__item', classNA: 'search__link', path: '/point'},
+		{name: ' Целочисленные типы', classNL: 'search__item', classNA: 'search__link', path: '/integer'},
 	]
 
 	//Здесь создается фильтр,
@@ -34,32 +34,31 @@ function Search () {
 	//изначально фильтр пустой(то есть блоки-заголовки никак не фильтруются),
 	//когда в блок поиска что-что вводится, вводимый текст становится фильтром для наших блоков,
 	//сортируя их по названию блока-заголовка, сопостовляя вводимый текст
-	const arrWords = itemInfo.map((item) => {
-		return item.name.toLowerCase().split(' ');
-	})
-
-	const filterS = itemInfo.filter((item) => {
+	const filterArray = itemInfo.filter((item) => {
 		
-		for(let i = 0; i < arrWords.length; i++) {
+		if(value.toLowerCase() === '') {
+			return item.name;
+		} else {
 
-			for(let j = 0; j < arrWords[i].length; j++) {
+			let index = [];
 
+			for(let i = 0; i < item.name.length; i++) {
 
-				if(arrWords[i][j].slice(0, value.length).toLowerCase().includes(value.toLowerCase())) {
+				if(item.name[i] === ' ') {
+					index.push(i);
+				};
+			}
 
-					if(item.name.toLowerCase().includes(arrWords[i].join(' '))) {
-						return item.name;
-					} 
+			if(item.name.toLowerCase().includes(value.toLowerCase())) {
+
+				for(let j = 0; j < item.name.length; j++) {
+
+					if(item.name.toLowerCase().search(value.toLowerCase()) === (index[j] + 1)) {
+						return item.name
+					}
 				}
-
-
-
-				// if(item.name.slice(0, value.length).toLowerCase().includes(value.toLowerCase())) {
-				// 	return item.name;
-				// }
-			}	
+			}
 		}
-
 	})
 
 	// Здесь генерируется лицевая часть блока поиска и заголовков
@@ -79,7 +78,7 @@ function Search () {
 
 						{
 							//Здесь функция выводит блоки-загловки через фильтр
-							filterS.map((item, i) => {
+							filterArray.map((item, i) => {
 								return (
 									<NavLink key={i} className={item.classNL} to={item.path}> <li className={item.classNA}>{item.name}</li> </NavLink>
 								)
