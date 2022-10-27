@@ -33,7 +33,7 @@
 .form__search {
 	width: 250px;
 	border-radius: 5px;
-	padding: 15px 0 15px 10px;
+	padding: 15px 50px 15px 10px;
 	background: #fff;
 	box-shadow: 0 0 10px #514945;
 }
@@ -63,8 +63,7 @@
 	align-items: center;
 	justify-content: center;
 	background: #ECEEF2;
-/*	border: 1px solid #514945;
-*/	border-radius: 5px;
+	border-radius: 5px;
 	color: inherit;
 }
 

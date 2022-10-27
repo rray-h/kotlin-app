@@ -3,42 +3,32 @@ import ReactDOM from 'react-dom';
 
 import { NavLink } from "react-router-dom";
 
+import {itemInfo} from "./source";
+
 function Search () {
-
-
 	// Здесь создается состояние, 
-	// в setValue поподает весь текст, что заполняется в блоке поиска(строка 43, событие onChange),
-	// в value весь текст сохраняется сохраняется 
+	// в setValue попадает весь текст, что заполняется в блоке поиска(строка 43, событие onChange),
+	// в value весь текст сохраняется
 	const [value, setValue] = useState('');
 
-
-	//Это массив обЪектов, в котором хранятся наши блоки-заголовки,
-	//и автоматически генерируются через фильтр
-	const itemInfo = [
-		{name: ' Что такое Kotlin?', classNL: 'search__item', classNA: 'search__link', path: '/iskotlin'},
-		{name: ' История языка Kotlin', classNL: 'search__item', classNA: 'search__link', path: '/kotlin'},
-		{name: ' Логический тип', classNL: 'search__item', classNA: 'search__link', path: '/boolean'},
-		{name: ' Массивы', classNL: 'search__item', classNA: 'search__link', path: '/array'},
-		{name: ' Массивы примитивных типов', classNL: 'search__item', classNA: 'search__link', path: '/arrayprim'},
-		{name: ' Операции', classNL: 'search__item', classNA: 'search__link', path: '/operation'},
-		{name: ' Представление чисел в JVM', classNL: 'search__item', classNA: 'search__link', path: '/jvm'},
-		{name: ' Символы и строки', classNL: 'search__item', classNA: 'search__link', path: '/string'},
-		{name: ' Символьные постоянные', classNL: 'search__item', classNA: 'search__link', path: '/permanent'},
-		{name: ' Строковые литералы', classNL: 'search__item', classNA: 'search__link', path: '/literal'},
-		{name: ' Типы с плавающей точкой', classNL: 'search__item', classNA: 'search__link', path: '/point'},
-		{name: ' Целочисленные типы', classNL: 'search__item', classNA: 'search__link', path: '/integer'},
-	]
-
+	//Здесь генерируется массив объектов, берущий данные из файла source.jsx
+	const titles = itemInfo.map((item) => {
+		return item;
+	})
 	//Здесь создается фильтр,
 	//по которому появляются блоки-заголовки
 	//изначально фильтр пустой(то есть блоки-заголовки никак не фильтруются),
 	//когда в блок поиска что-что вводится, вводимый текст становится фильтром для наших блоков,
 	//сортируя их по названию блока-заголовка, сопостовляя вводимый текст
-	const filterArray = itemInfo.filter((item) => {
+	const filterArray = titles.filter((item) => {
 		
 		if(value.toLowerCase() === '') {
 			return item.name;
-		} else {
+		} 
+		else if(value.toLowerCase() === '?') {
+			return 0;
+		} 
+		else {
 
 			let index = [];
 
@@ -54,11 +44,11 @@ function Search () {
 				for(let j = 0; j < item.name.length; j++) {
 
 					if(item.name.toLowerCase().search(value.toLowerCase()) === (index[j] + 1)) {
-						return item.name
+						return item.name;
 					}
 				}
 			}
-		}
+		} 
 	})
 
 	// Здесь генерируется лицевая часть блока поиска и заголовков
