@@ -17,7 +17,7 @@ function Is () {
 					
 					<div className="main-content__about about">
 						
-						<div className="about__title">Bibendum rutrum</div>
+						<div className="about__title">Оперотры is и !is</div>
 						<div className="about__text">Используйте оператор is или его отрицание !is, чтобы проверить соответствует ли объект заданному типу во время исполнения.</div>
 						<div className="about__links">
 							<a href="https://kotlinlang.ru/docs/typecasts.html">https://kotlinlang.ru/docs/typecasts.html</a>

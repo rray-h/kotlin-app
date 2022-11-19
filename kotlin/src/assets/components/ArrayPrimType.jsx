@@ -22,7 +22,7 @@ function ArrayPrimType () {
 						<div className="about__title">Массивы примитивных типов</div>
 						<div className="about__text">{text}</div>
 						<div className="about__links">
-							<a href="#">https://img4.goodfon.ru/original/2560x1600/1/b3/shchenki-korgi-milye.jpg</a> <br />
+							<a href="https://kotlinlang.ru/docs/basic-types.html">https://kotlinlang.ru/docs/basic-types.html</a> <br />
 						</div>
 
 					</div>

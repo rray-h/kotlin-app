@@ -74,5 +74,5 @@ export const itemInfo = [
 	{name: ' Функции', classNL: 'search__item', classNA: 'search__link', path: '/func'},
 	{name: ' Аргументы по умолчанию', classNL: 'search__item', classNA: 'search__link', path: '/def'},
 	{name: ' Именованные аргументы', classNL: 'search__item', classNA: 'search__link', path: '/named'},
-	{name: ' Инфиксная запись', classNL: 'search__item', classNA: 'search__link', path: '/zapis'},
+	{name: ' Инфиксная запись', classNL: 'search__item', classNA: 'search__link', path: '/zapis 	'},
 ]

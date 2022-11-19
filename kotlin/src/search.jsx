@@ -25,7 +25,7 @@ function Search () {
 		if(value.toLowerCase() === '') {
 			return item.name;
 		} 
-		else if(value.toLowerCase() === '?') {
+		else if(value.toLowerCase() === '?' || value.toLowerCase() == '(' || value.toLowerCase() == ')') {
 			return 0;
 		} 
 		else {
@@ -58,7 +58,9 @@ function Search () {
 				<div className="search__body">
 					<div className="search__form">
 						<form action="#" className="form">
-							<input type="text" placeholder="Search" id="search" className="form__search" onChange={(event) => setValue(event.target.value)} />
+							<input type="text" placeholder="Search" 
+							id="search" className="form__search" 
+							onChange={(event) => setValue(event.target.value)} />
 							<div className="form__btn"></div>
 						</form>
 					</div>
@@ -70,7 +72,9 @@ function Search () {
 							//Здесь функция выводит блоки-загловки через фильтр
 							filterArray.map((item, i) => {
 								return (
-									<NavLink key={i} className={item.classNL} to={item.path}> <li className={item.classNA}>{item.name}</li> </NavLink>
+									<NavLink key={i} className={item.classNL} to={item.path}> 
+										<li className={item.classNA}>{item.name}</li> 
+									</NavLink>
 								)
 							})
 						}
